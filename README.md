@@ -74,6 +74,10 @@ Import the generated `.apkg` file located in the `data/` or `french_grammer/` fo
 
 - **Content Hashing**: Anki often caches media. By appending a hash of the file content to the filename (e.g., `image_abc123.jpg`), we ensure that when you change the image content, Anki recognizes it as a new file and updates the card immediately.
 - **Media Storage**: Source images are stored as `name.jpg`, while the versions used in Anki are stored as `name_hash.jpg`.
+- **Stable IDs & Study Progress**: 
+    - Each script uses a permanent **Model ID** and **Deck ID**. 
+    - Each card is assigned a stable **GUID** (globally unique identifier) based on the French word/sentence.
+    - **Why this matters**: This allows you to update your CSV files periodically (adding new words or changing images) without losing your study progress. When you import the updated `.apkg`, Anki matches the GUIDs, updates the fields (like new images), and **preserves your review history, intervals, and due dates**.
 
 ## License
 
