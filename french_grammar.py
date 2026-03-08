@@ -166,7 +166,8 @@ with open(CSV_FILE, newline='', encoding='utf-8') as csvfile:
             media_files.append(audio_file)
             audio_tag = f'[sound:{os.path.basename(audio_file)}]'
 
-        # Add note with tags
+        # Add note with tags and stable GUID
+        note_id = genanki.guid_for(full_sentence)
         note = genanki.Note(
             model=model,
             fields=[
@@ -175,7 +176,8 @@ with open(CSV_FILE, newline='', encoding='utf-8') as csvfile:
                 audio_tag,      # Audio: [sound:filename.mp3]
                 verb_hint       # VerbHint: "être"
             ],
-            tags=[verb_hint]
+            tags=[verb_hint],
+            guid=note_id
         )
         deck.add_note(note)
         print(f"Added card: {cloze_sentence}")

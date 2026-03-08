@@ -94,8 +94,11 @@ def sanitize_filename(text):
 # -----------------------
 
 # Model for Vocabulary Cards (Basic Front/Back)
+MODEL_ID = 1892345678
+DECK_ID = 2109876543
+
 model = genanki.Model(
-    random.randrange(1 << 30, 1 << 31),
+    MODEL_ID,
     'French Vocabulary Model',
     fields=[
         {'name': 'FrenchWord'},
@@ -186,7 +189,7 @@ model = genanki.Model(
 )
 
 deck = genanki.Deck(
-    random.randrange(1 << 30, 1 << 31),
+    DECK_ID,
     'French Vocabulary Deck'
 )
 
@@ -243,7 +246,8 @@ else:
                 else:
                     print(f"  - Audio generation failed.")
 
-            # Add Note
+            # Add Note with stable GUID
+            note_id = genanki.guid_for(f"{french_word}_{french_sentce}")
             note = genanki.Note(
                 model=model,
                 fields=[
@@ -252,7 +256,8 @@ else:
                     french_sentce,
                     english_sentece,
                     audio_tag
-                ]
+                ],
+                guid=note_id
             )
             deck.add_note(note)
 

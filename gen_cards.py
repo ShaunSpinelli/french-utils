@@ -170,6 +170,10 @@ with open(CSV_FILE, newline='', encoding='utf-8') as csvfile:
             media_files.append(fr_audio_file)
             audio_tag = f'[sound:{os.path.basename(fr_audio_file)}]'
 
+        # Generate a stable GUID based on the French word
+        # This ensures Anki updates the card if fields change instead of creating duplicates
+        note_id = genanki.guid_for(french)
+
         # Add note
         note = genanki.Note(
             model=model,
@@ -178,7 +182,8 @@ with open(CSV_FILE, newline='', encoding='utf-8') as csvfile:
                 english,
                 img_tag,
                 audio_tag.strip()
-            ]
+            ],
+            guid=note_id
         )
         deck.add_note(note)
 
