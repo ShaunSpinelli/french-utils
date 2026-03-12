@@ -1,2 +1,1 @@
-data/media/une_chaussette.jpg, sock https://t4.ftcdn.net/jpg/06/46/41/41/360_F_646414154_0djwOiepE7mIgLZ32Ox8JLdBpmqXMlm6.jpg
-data/media/un_stylo.jpg, pen https://www.writechusa.com/data/thumb/res/en/20250822/1_f0fa3774.jpg_20250822141047_400x400.jpg
+data/media/une_épaule.jpg, shoulder https://images.stockcake.com/public/1/5/c/15c5ec02-d61a-41bc-a560-66135e83ebc8_medium/therapeutic-touch-treatment-stockcake.jpg

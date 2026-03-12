@@ -110,6 +110,9 @@ missing_images = []
 # PROCESS CSV
 # -----------------------
 
+# Track processed words to avoid duplicates in the same run
+processed_words = set()
+
 # Function to check if a file is already in image_links.txt
 def is_already_in_links(img_path):
     if not os.path.exists("image_links.txt"):
@@ -122,6 +125,12 @@ with open(CSV_FILE, newline='', encoding='utf-8') as csvfile:
     for row in reader:
         french = row['french'].strip()
         english = row['english'].strip()
+
+        if french in processed_words:
+            print(f"⚠️ Skipping duplicate word: {french}")
+            continue
+        
+        processed_words.add(french)
 
         # Filenames
         base = sanitize_filename(french)
